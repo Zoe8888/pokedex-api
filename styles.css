@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+}
+
+button {
+  padding: 2%;
+  margin: 0.5%;
+}
+
+.pokemon-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.pokemon-details {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  height: 20vh;
+  width: 20vw;
+}
