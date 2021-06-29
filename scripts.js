@@ -26,17 +26,23 @@ function getPokemonInfo(url) {
       console.log(data);
       document.querySelector(
         ".pokemon-details"
-      ).innerHTML = `<img src="${data.sprites.front_default} ">`;
+      ).innerHTML = `<img src="${data.sprites.front_default} ">
+        <div class="card-details">
+          <div class="name">${data.name}</div> <br>
+          <div class="description">
+            <p class="type">Type: ${data.types[0].type.name}</p>
+            <p class="height">Height: ${data.height}</p>
+            <p class="weight">Weight: ${data.weight}</p>
+            <p class="ability">Ability: ${data.abilities[0].ability.name}</p>
+          </div>
+        </div>
+        `;
     });
 }
 
-// const header = document.getElementById("header");
-// const listContainer = document.getElementById("pokemon-list");
-// const url = "https://pokeapi.co/api/v2/pokemon/ditto"
-
-// function createCard(pokemon, index) {
-//   let card = document.createElement("div");
-//   card.classList.add("card");
-//   let content = `
-//   `
-// }
+let pokemonCard = {
+  imgURL: "",
+  imgALT: "",
+  pokemonName: "",
+  type: "",
+};

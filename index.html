@@ -8,7 +8,15 @@
     <title>Document</title>
   </head>
   <body>
-    <h1 id="header">My Pokedex</h1>
+    <h1 id="header">Pokedex API</h1>
+    <div class="search-bar">
+      <input
+        type="text"
+        class="search"
+        placeholder="Search Pokemon"
+        onblur="searchPkemonApi()"
+      />
+    </div>
     <div class="pokemon-details"></div>
     <div class="pokemon-list"></div>
     <script src="scripts.js"></script>
