@@ -24,12 +24,19 @@ function getPokemonInfo(url) {
     .then((response) => response.json())
     .then((data) => {
       console.log(data);
-      document.querySelector(
-        ".pokemon-details"
-      ).innerHTML = `<img src="${data.sprites.front_default} ">
+      let desc = "";
+      fetch(data.species.url)
+        .then((res) => res.json())
+        .then((data) => {
+          desc = data.flavor_text_entries[0].flavor_text;
+        });
+      document.querySelector(".pokemon-details").innerHTML = `
+        <button class="close" title="close">X</button>
+        <img class="sprite" src="${data.sprites.other.dream_world.front_default} ">
         <div class="card-details">
           <div class="name">${data.name}</div> <br>
           <div class="description">
+            <p class="species">${desc}</p>
             <p class="type">Type: ${data.types[0].type.name}</p>
             <p class="height">Height: ${data.height}</p>
             <p class="weight">Weight: ${data.weight}</p>
@@ -37,8 +44,36 @@ function getPokemonInfo(url) {
           </div>
         </div>
         `;
+      document.querySelector(".close").addEventListener("click", function () {
+        document.querySelector(".pokemon-details").classList.remove("active");
+      });
+      document.querySelector(".pokemon-details").classList.add("active");
     });
 }
+
+emptySearch = () => {
+  const search = document.getElementsByClassName("search-bar").value;
+  const empty = `<div class="card")"> 
+      <div class="card_name">
+        The Pokemon: ${search} does not exist in our database.
+        Feel free to search for another one.
+      </div>
+    </div>`;
+  renderEmpty("pokemons", empty);
+};
+
+findPokemon = (pokemon) => {
+  return `<img src="${data.sprites.front_default} ">
+  <div class="card-details">
+    <div class="name">${data.name}</div> <br>
+    <div class="description">
+      <p class="type">Type: ${data.types[0].type.name}</p>
+      <p class="height">Height: ${data.height}</p>
+      <p class="weight">Weight: ${data.weight}</p>
+      <p class="ability">Ability: ${data.abilities[0].ability.name}</p>
+    </div>
+  </div>`;
+};
 
 let pokemonCard = {
   imgURL: "",

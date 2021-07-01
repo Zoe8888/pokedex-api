@@ -15,6 +15,7 @@ body {
 
 #header {
   margin: 2%;
+  font-size: 2.5rem;
 }
 
 .search-bar {
@@ -27,6 +28,17 @@ body {
   border: 2px solid;
 }
 
+.pokeball {
+  margin: 10% 0;
+  border: none;
+  width: 20vw;
+}
+
+.pokeball:hover {
+  transform: rotateY(360deg);
+  transition: 0.5s all ease-in-out;
+}
+
 button {
   padding: 1%;
   margin: 0.5%;
@@ -34,10 +46,13 @@ button {
   color: rgb(211, 36, 36);
   border-radius: 10%;
   border: 2px solid black;
+  font-size: 1rem;
+  text-transform: capitalize;
 }
 
 button:hover {
   cursor: pointer;
+  text-decoration: underline;
 }
 
 .pokemon-info {
@@ -50,23 +65,101 @@ button:hover {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 40vh;
-  width: 20vw;
-  margin: 2%;
+  height: 100vh;
+  width: 30vw;
   padding: 2%;
   background-color: white;
-  border-radius: 10%;
   border: 5px solid;
+  overflow-y: scroll;
+  position: fixed;
+  left: -100%;
+  transition: 0.3s linear;
 }
 
-img {
-  display: flex;
+.pokemon-details.active {
+  left: 0;
+}
+
+.close {
+  top: 1%;
+  left: 1%;
+  position: absolute;
+  font-size: 1.5rem;
+  color: black;
+  background-color: rgb(211, 36, 36);
+  padding: 2%;
+}
+
+.close:hover {
+  color: rgb(211, 36, 36);
+  background-color: black;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
+}
+
+.sprite {
   background-color: rgb(211, 36, 36);
   border-radius: 50%;
-  border: 10px solid;
-  width: 7vw;
+  border: 4px solid;
+  width: 223px;
+  height: 223px;
+  padding: 0% 0%;
+}
+
+.sprite:hover {
+  transform: rotateY(360deg);
+  transition: 0.5s all ease-in-out;
 }
 
 .card-details {
   margin-top: 10%;
+  font-size: 1.5rem;
+}
+
+.name {
+  text-transform: capitalize;
+}
+
+.type,
+.height,
+.weight,
+.ability {
+  margin: 5% 0;
+  text-transform: capitalize;
+}
+
+@media screen and (max-width: 924px) {
+  .pokeball {
+    width: 30vw;
+  }
+  img {
+    width: 20vw;
+  }
+  .pokemon-list {
+    margin-left: 3%;
+  }
+  button {
+    font-size: 1.2rem;
+  }
+  .pokemon-details {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .pokeball {
+    width: 50vw;
+  }
+  img {
+    width: 25vw;
+  }
+  .pokemon-list {
+    margin-left: 3%;
+  }
+  button {
+    font-size: 1.2rem;
+  }
+  .pokemon-details {
+    width: 52vw;
+  }
 }
