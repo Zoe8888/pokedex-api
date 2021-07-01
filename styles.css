@@ -104,6 +104,8 @@ button:hover {
   width: 223px;
   height: 223px;
   padding: 0% 0%;
+  top: -1%;
+  position: relative;
 }
 
 .sprite:hover {
@@ -120,6 +122,10 @@ button:hover {
   text-transform: capitalize;
 }
 
+.species {
+  margin: 10% 0;
+}
+
 .type,
 .height,
 .weight,
@@ -132,8 +138,11 @@ button:hover {
   .pokeball {
     width: 30vw;
   }
-  img {
-    width: 20vw;
+  .sprite {
+    width: 24vw;
+  }
+  .name {
+    font-size: 1.5rem;
   }
   .pokemon-list {
     margin-left: 3%;
@@ -150,8 +159,11 @@ button:hover {
   .pokeball {
     width: 50vw;
   }
-  img {
-    width: 25vw;
+  .sprite {
+    width: 30vw;
+    height: 30vw;
+    position: relative;
+    top: -3%;
   }
   .pokemon-list {
     margin-left: 3%;
@@ -161,5 +173,8 @@ button:hover {
   }
   .pokemon-details {
     width: 52vw;
+  }
+  .card-details {
+    font-size: 1.2rem;
   }
 }

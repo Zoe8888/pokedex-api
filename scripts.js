@@ -25,30 +25,41 @@ function getPokemonInfo(url) {
     .then((data) => {
       console.log(data);
       let desc = "";
-      fetch(data.species.url)
-        .then((res) => res.json())
-        .then((data) => {
-          desc = data.flavor_text_entries[0].flavor_text;
-        });
+
       document.querySelector(".pokemon-details").innerHTML = `
         <button class="close" title="close">X</button>
         <img class="sprite" src="${data.sprites.other.dream_world.front_default} ">
         <div class="card-details">
           <div class="name">${data.name}</div> <br>
           <div class="description">
-            <p class="species">${desc}</p>
+            <p class="species"></p>
             <p class="type">Type: ${data.types[0].type.name}</p>
             <p class="height">Height: ${data.height}</p>
             <p class="weight">Weight: ${data.weight}</p>
-            <p class="ability">Ability: ${data.abilities[0].ability.name}</p>
+            <p class="ability">Ability: ${data.abilities[0].ability.name} </p>
           </div>
         </div>
         `;
+      fetch(data.species.url)
+        .then((res) => res.json())
+        .then((data) => {
+          document.querySelector(".species").innerHTML =
+            data.flavor_text_entries[0].flavor_text;
+        });
       document.querySelector(".close").addEventListener("click", function () {
         document.querySelector(".pokemon-details").classList.remove("active");
       });
       document.querySelector(".pokemon-details").classList.add("active");
     });
+}
+
+let abilities = "";
+for (let i = 0; i < data.abilities.length; i++) {
+  if (i < data.abilities.length - 1) {
+    abilities += `${data.abilities[i].ability.name},`;
+  } else {
+    abilities += `${data.abilities[i].ability.name}`;
+  }
 }
 
 emptySearch = () => {
