@@ -40,6 +40,10 @@ body {
   outline: none;
 }
 
+.search-button {
+  background-color: white;
+}
+
 .invalid {
   cursor: default;
   position: absolute;
@@ -201,6 +205,32 @@ button:hover {
   }
   .pokemon-details {
     width: 40vw;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .search-bar {
+    position: absolute;
+    top: 94%;
+    right: 20%;
+    height: 4vh;
+  }
+
+  .invalid {
+    position: absolute;
+    top: 89%;
+    right: 7%;
+  }
+
+  .invalid::before {
+    border-top: 10px solid rgba(0, 0, 0, 0.281);
+    border-bottom: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateY(446%);
   }
 }
 
