@@ -13,6 +13,8 @@ function getPokemonList(url) {
         container.innerHTML += `<button onclick="getPokemonInfo('${button.url}')">${button.name}</button>`;
       });
       container.innerHTML += `<br><br>
+      <button onclick="getPokemonList('${data.previous}')">Previous</button>`;
+      container.innerHTML += `
       <button onclick="getPokemonList('${data.next}')">Next</button>`;
     });
 }
@@ -68,4 +70,15 @@ searchButton.addEventListener("click", function () {
   let search = document.querySelector(".search").value;
   search = search.toLowerCase();
   getPokemonInfo(`https://pokeapi.co/api/v2/pokemon/${search}`);
+  fetch(`https://pokeapi.co/api/v2/pokemon/${search}`).then((res) => {
+    if (res.ok) {
+      if (response.url == `https://pokeapi.co/api/v2/pokemon/`) {
+        document.querySelector(".invalid").classList.add("active");
+      } else {
+        getPokemonInfo(`https://pokeapi.co/api/v2/pokemon/${pokemon}`);
+      }
+    } else {
+      document.querySelector(".invalid").classList.add("active");
+    }
+  });
 });

@@ -8,9 +8,9 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
   background-color: rgb(211, 36, 36);
   font-family: "Courier New", Courier, monospace, sans-serif;
+  max-height: 100vh;
 }
 
 #header {
@@ -37,18 +37,19 @@ body {
   margin-right: 5%;
   margin-left: 3%;
   height: 100%;
+  outline: none;
 }
 
 .invalid {
   cursor: default;
   position: absolute;
-  top: 60px;
-  right: 85px;
+  top: 10%;
+  right: 2.4%;
   color: white;
   background: rgba(0, 0, 0, 0.281);
   opacity: 0;
-  padding: 10px;
-  border-radius: 4px;
+  padding: 1%;
+  border-radius: 10px;
   transform: translateY(-20px);
   transition: 0.3s ease;
   z-index: -1;
@@ -96,7 +97,10 @@ button {
 
 button:hover {
   cursor: pointer;
-  text-decoration: underline;
+  color: rgb(211, 36, 36);
+  background-color: black;
+  transition: 0.3s ease-in-out;
+  text-decoration: none;
 }
 
 .pokemon-info {
@@ -111,6 +115,7 @@ button:hover {
   flex-direction: column;
   height: 100vh;
   width: 30vw;
+  min-width: 290px;
   padding: 2%;
   background-color: white;
   border: 5px solid;
@@ -132,13 +137,6 @@ button:hover {
   color: black;
   background-color: rgb(211, 36, 36);
   padding: 2%;
-}
-
-.close:hover {
-  color: rgb(211, 36, 36);
-  background-color: black;
-  transition: 0.3s ease-in-out;
-  text-decoration: none;
 }
 
 .sprite {
@@ -206,7 +204,73 @@ button:hover {
   }
 }
 
+@media screen and (max-width: 768px) {
+  #header {
+    margin: 5%;
+  }
+
+  .search-bar {
+    position: absolute;
+    top: 93%;
+    right: 20%;
+    background-color: white;
+  }
+
+  .invalid {
+    position: absolute;
+    top: 88%;
+    right: 6%;
+  }
+
+  .invalid::before {
+    border-top: 10px solid rgba(0, 0, 0, 0.281);
+    border-bottom: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transform: translateY(435%);
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .card-details {
+    font-size: 1rem;
+  }
+
+  .search-bar {
+    position: absolute;
+    top: 93%;
+    right: 45%;
+  }
+
+  .invalid {
+    position: absolute;
+    top: 87%;
+    right: 7%;
+  }
+
+  .invalid::before {
+    border-top: 10px solid rgba(0, 0, 0, 0.281);
+    border-bottom: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transform: translateY(373%);
+  }
+}
+
 @media screen and (max-width: 400px) {
+  .search-bar {
+    position: absolute;
+    top: 88%;
+    right: 50%;
+  }
+  .search {
+    margin: 0 10%;
+  }
+  .invalid {
+    position: absolute;
+    top: 95%;
+    right: 10%;
+  }
   .pokeball {
     width: 50vw;
   }
@@ -216,6 +280,9 @@ button:hover {
     position: relative;
     top: -3%;
   }
+  .sprite img {
+    width: 150px;
+  }
   .pokemon-list {
     margin-left: 3%;
   }
@@ -223,9 +290,66 @@ button:hover {
     font-size: 1.2rem;
   }
   .pokemon-details {
-    width: 52vw;
+    display: flex;
+    justify-content: center;
+    width: 60vw;
   }
   .card-details {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .search-bar {
+    position: absolute;
+    top: 93%;
+    right: 52%;
+  }
+  .invalid {
+    position: absolute;
+    top: 87%;
+    right: 10%;
+  }
+  .invalid::before {
+    border-top: 10px solid rgba(0, 0, 0, 0.281);
+    border-bottom: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transform: translateY(374%);
+  }
+
+  .pokemon-details {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 360px) {
+  #header {
+    margin: 5%;
+  }
+
+  .search-bar {
+    position: absolute;
+    top: 92%;
+    right: 55%;
+  }
+
+  .invalid {
+    position: absolute;
+    top: 86%;
+    right: 10%;
+  }
+
+  .invalid::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid rgba(0, 0, 0, 0.281);
+    border-bottom: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transform: translateY(355%);
   }
 }
