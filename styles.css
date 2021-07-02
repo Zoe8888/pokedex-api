@@ -212,8 +212,9 @@ button:hover {
   .search-bar {
     position: absolute;
     top: 94%;
-    right: 20%;
+    right: 4%;
     height: 4vh;
+    width: 32vw;
   }
 
   .invalid {
@@ -333,8 +334,13 @@ button:hover {
   .search-bar {
     position: absolute;
     top: 93%;
-    right: 52%;
+    right: 2%;
+    width: 68vw;
   }
+  .search {
+    margin: 0 4%;
+  }
+
   .invalid {
     position: absolute;
     top: 87%;
@@ -382,4 +388,32 @@ button:hover {
     border-right: 10px solid transparent;
     transform: translateY(355%);
   }
+}
+
+@media screen and (max-width: 320px) {
+  .search-bar {
+    position: absolute;
+    top: 92%;
+    right: 5%;
+    width: 75vw;
+  }
+  .search {
+    margin: 0 2%;
+  }
+
+  .invalid {
+    position: absolute;
+    top: 86%;
+    right: 10%;
+  }
+
+  .invalid::before {
+    content: "";
+    width: 0;
+    height: 0;
+    border-top: 10px solid rgba(0, 0, 0, 0.281);
+    border-bottom: none;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    transform: translateY(354%);
 }
