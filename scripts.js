@@ -28,7 +28,9 @@ function getPokemonInfo(url) {
 
       document.querySelector(".pokemon-details").innerHTML = `
         <button class="close" title="close">X</button>
-        <img class="sprite" src="${data.sprites.other.dream_world.front_default} ">
+        <div class="sprite">
+          <img src="${data.sprites.other.dream_world.front_default} ">
+        </div>
         <div class="card-details">
           <div class="name">${data.name}</div> <br>
           <div class="description">
@@ -36,10 +38,18 @@ function getPokemonInfo(url) {
             <p class="type">Type: ${data.types[0].type.name}</p>
             <p class="height">Height: ${data.height}</p>
             <p class="weight">Weight: ${data.weight}</p>
-            <p class="ability">Ability: ${data.abilities[0].ability.name} </p>
+            <p class="ability">Ability: </p>
           </div>
         </div>
         `;
+      let abilities = document.querySelector(".ability");
+      for (let i = 0; i < data.abilities.length; i++) {
+        if (i < data.abilities.length - 1) {
+          abilities.innerHTML += `${data.abilities[i].ability.name},`;
+        } else {
+          abilities.innerHTML += `${data.abilities[i].ability.name}`;
+        }
+      }
       fetch(data.species.url)
         .then((res) => res.json())
         .then((data) => {
@@ -53,42 +63,9 @@ function getPokemonInfo(url) {
     });
 }
 
-let abilities = "";
-for (let i = 0; i < data.abilities.length; i++) {
-  if (i < data.abilities.length - 1) {
-    abilities += `${data.abilities[i].ability.name},`;
-  } else {
-    abilities += `${data.abilities[i].ability.name}`;
-  }
-}
-
-emptySearch = () => {
-  const search = document.getElementsByClassName("search-bar").value;
-  const empty = `<div class="card")"> 
-      <div class="card_name">
-        The Pokemon: ${search} does not exist in our database.
-        Feel free to search for another one.
-      </div>
-    </div>`;
-  renderEmpty("pokemons", empty);
-};
-
-findPokemon = (pokemon) => {
-  return `<img src="${data.sprites.front_default} ">
-  <div class="card-details">
-    <div class="name">${data.name}</div> <br>
-    <div class="description">
-      <p class="type">Type: ${data.types[0].type.name}</p>
-      <p class="height">Height: ${data.height}</p>
-      <p class="weight">Weight: ${data.weight}</p>
-      <p class="ability">Ability: ${data.abilities[0].ability.name}</p>
-    </div>
-  </div>`;
-};
-
-let pokemonCard = {
-  imgURL: "",
-  imgALT: "",
-  pokemonName: "",
-  type: "",
-};
+let searchButton = document.querySelector(".search-button");
+searchButton.addEventListener("click", function () {
+  let search = document.querySelector(".search").value;
+  search = search.toLowerCase();
+  getPokemonInfo(`https://pokeapi.co/api/v2/pokemon/${search}`);
+});
